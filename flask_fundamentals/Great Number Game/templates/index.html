@@ -13,31 +13,29 @@
 <body>
     <section id="hero" class="wow fadeIn">
         <div class="hero-container">
-            <h1>Welcome!</h1>
-            <h4>Multiply two matrixs</h4>
-            
+            <h1>Welcome to the Great Number Game</h1>
+            <h4>I am thinking of a number between 1 and 100</h4>
+            <h4>Take a guess!</h4>
             <br>
-            {% if result == 0 %}
-            <div class="red">Wrong Matrixs</div>
-            {% endif %}
-            {% if result != 0 %}
-            <div class="red">Result {{session['result']}}</div>
+            {% if result == "high" %}
+            <div class="red">Too High!</div>
             {% endif %}
 
-
+            {% if result == "low" %}
+            <div class="red">Too Low!</div>
+            {% endif %}
+            
+            {% if result == "correct" %}
+            <div class="green">{{session["correct"]}} was the correct number</div>
+            <form action="/reset" method="get">
+                <button class="btn" type="submit">Play Again!</button>
+            </form>
+            {% endif %}
             
            
-            <form action="/n" method="post">
-                <input type="text" name="n"><br>
-                <button class="btn" type="submit">Submit</button>
-                
-           
-            {% if not session or session['result'] != 0%}
-            <form action="/multiply" method="post">
-                
-                <input type="text" name="first"><br>
-                <input type="text" name="second"><br>
-
+            {% if not session or session['result'] != "correct"%}
+            <form action="/guess" method="post">
+                <input type="text" name="guess"><br>
                 <br>
                 <button class="btn" type="submit">Submit</button>
             </form> 
