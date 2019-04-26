@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Leads and Clients</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+        width: 500px !important ;
+        margin: 0px auto ;
+
+        }
+
+        input{
+            width: 100px !important;
+           
+            
+            
+        }
+        .fa{
+            display: inline;
+        }
+
+        button{
+            width: 100px !important;
+            
+        }
+    </style>
+
+<script>
+    window.onload = function () {
+    
+    var options = {
+        title: {
+            text: "Costumers and Number of Leads"
+        },
+        
+        animationEnabled: true,
+        
+        data: [{
+            type: "pie",
+            startAngle: 40,
+            toolTipContent: "<b>{label}</b>: {y}%",
+            showInLegend: "true",
+            legendText: "{label}",
+            indexLabelFontSize: 16,
+            indexLabel: "{label} - {y}%",
+             
+            dataPoints:
+            [    
+            {% for leadsandclients in leadsandclients %}
+              {y: {{leadsandclients.number_of_leads}}, label: "{{leadsandclients.customers}}" },
+            {% endfor %}
+            ]
+              
+        }]
+    };
+    $("#chartContainer").CanvasJSChart(options);
+    
+    }
+    </script>
+</head>
+<body>
+        <form action= "/update_date" method="post">
+            <h1>Update your reports date</h1>
+            <input type=" text" name="customers" placeholder="Full Name"> 
+            
+            <input type="datetime"  name= "start_report_date"  placeholder="YYYY-MM-DD">
+            <i class="fa fa-calendar"></i>
+            
+            <input type="datetime"  name= "end_report_date" placeholder="YYYY-MM-DD" >
+            <i class="fa fa-calendar"></i>
+
+            <button type="submit"> Update</button> 
+        
+        <h1>List of all customers and number of leads</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+               
+                <th scope="col">Customers</th>
+                <th scope="col">Number of Leads</th>
+                
+                </tr>
+            </thead>
+            {% for leadsandclients in leadsandclients %}  
+            <tbody>
+                <tr>
+                
+                    <td>{{leadsandclients.customers}}</td>
+                    <td >{{leadsandclients.number_of_leads}}</td>
+                   
+                
+            
+            
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+           
+        <div id="chartContainer" style="height: 300px; width: 100%;">
+        </div>
+        <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+        <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+                 
+   
+
+    
+      
+</body>
+</html>

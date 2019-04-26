@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Great Number Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylee.css') }}">
+    
+</head>
+<body>
+    <section id="hero" class="wow fadeIn">
+        <div class="hero-container">
+            <h1>Welcome!</h1>
+            <h4>Multiply two matrixs</h4>
+            
+            <br>
+            {% if result == 0 %}
+            <div class="red">Wrong Matrixs</div>
+            {% endif %}
+            {% if result != 0 %}
+            <div class="red">Result {{session['result']}}</div>
+            {% endif %}
+
+
+            
+           
+            <form action="/n" method="post">
+                <input type="text" name="n"><br>
+                <button class="btn" type="submit">Submit</button>
+                
+           
+            {% if not session or session['result'] != 0%}
+            <form action="/multiply" method="post">
+                
+                <input type="text" name="first"><br>
+                <input type="text" name="second"><br>
+
+                <br>
+                <button class="btn" type="submit">Submit</button>
+            </form> 
+            {% endif %}
+
+
+            
+
+            
+            
+        </div>
+    </section>
+            
+    
+</body>
+</html>

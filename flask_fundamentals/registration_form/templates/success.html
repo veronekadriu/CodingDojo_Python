@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/users.css') }}">
+
+    
+    <title>Users</title>
+    
+</head>
+<body>
+<div>
+    <h1>Thanks for submitting your information.</h1>
+    
+    <p><b>First Name :</b>{{session['firstname']}}</p>
+    <p><b>Last Name :</b>{{session['lastname']}}</p>
+    <p><b>Email :</b>{{session['email']}}</p>
+    <p><b>Password : </b>{{session['password']}}</p>
+    
+         
+        
+    <form action="/">
+        <button>Go Back</button>
+    </form>
+</div>
+    
+</body>
+</html>
+    

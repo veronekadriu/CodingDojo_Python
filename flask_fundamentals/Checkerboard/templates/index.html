@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Checkerboard</title>
+    <style>
+		body{
+			width: 950px;
+			margin-left: 400px;
+		}
+		
+		table{
+			margin:0px;
+			padding: 0px;
+			width:400px;
+			height:400px;	
+		}
+        .color1{
+            background-color: black;
+        }
+        .color2{
+            background-color: red;
+        }
+    
+    </style>    
+</head>
+<body>
+	<h1>Checkerboard 8x8</h1>
+	
+    
+	<table>
+	{% for i in range(8): %}
+		<tr>
+			{%for j in range (8):%}
+			<td class="color{{(i+j)%2+1}} "></td> 
+			{% endfor %}
+		</tr> 
+			
+	{% endfor %}
+	</table>
+    
+    
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Counter</title>
+
+  
+    <!--This template was taken from a Bootstrap Template -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+  </head>
+
+  <body id="page-top">
+    
+    <!-- Header -->
+    <header class="masthead">
+      <div class="container">
+        <div class="intro-text">
+          <div class="intro-lead-in">Welcome To Our Page</div>
+          <p>You visited our page {{session['count']}} times</p>
+          <div class="intro-heading text-uppercase"></div>
+          <form action='/incrementby2' method='post'>
+            <button class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" >Add 2</button>
+        </form>
+        <form action='/clear' method='post'>
+          <button class="btn btn-primary btn-xl text-uppercase js-scroll-trigger">Clear</button>
+        </form>
+        </div>
+      </div>
+    </header>
+
+  
+  </body>
+
+</html>
